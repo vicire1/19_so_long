@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:56:03 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/10 22:59:37 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/12 19:05:52 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <string.h>
 # include <math.h>
 # include <mlx.h>
+# include "./get_next_line.h"
 
 typedef struct  s_data {
     void    *img;
@@ -28,5 +29,16 @@ typedef struct  s_data {
     int     line_len;
     int     endian;
 }               t_data;
+
+typedef struct  s_map {
+    int fd;
+    int len;
+    int high;
+}               t_map;
+
+typedef struct  s_so_long {
+t_map   map;
+char *test;
+}               t_so_long;
 
 #endif

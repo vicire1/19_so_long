@@ -6,11 +6,11 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 22:05:08 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/10 23:56:42 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:57:31 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -25,14 +25,26 @@ int main(void)
     void    *mlx;
     void    *mlx_win;
     t_data  img;
+    int     width;
+    int     height;
+    int     x;
+    int     y;
 
     mlx = mlx_init();
     if(!mlx)
         return (0);
-    mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello World!");
-    img.img = mlx_new_image(mlx, 1920, 1080);
+    width = 1500;
+    height = 1000;
+    mlx_win = mlx_new_window(mlx, width, height, "Hello World!");
+    img.img = mlx_new_image(mlx, width, height);
     img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_len, &img.endian);
-    my_mlx_pixel_put(&img, 1, 1, 0x00FF0000);
+    x = 0;
+    y = 0;
+    // while (x < width)
+    // {
+    //     my_mlx_pixel_put(&img, 1, 1, 0x00FF0000);
+        
+    // }
     mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
     mlx_loop(mlx);
 }
