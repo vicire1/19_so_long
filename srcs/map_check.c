@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:57:45 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/12 19:09:31 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/12 19:23:22 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,25 @@ int strlen_map(char *str)
     return (i);
 }
 
-int map_check(t_so_long *t_so_long)
+int map_check(char *str)
 {
     char    *line;
-    t_map   *map;
+    t_map   map;
     int     len;
     
-    t_so_long->map.fd = open(t_so_long->test, O_RDONLY);
-    t_so_long->map.high = 0;
-    line = get_next_line(t_so_long->map.fd);
-    t_so_long->map.len = strlen_map(line);
+    map.fd = open(str, O_RDONLY);
+    map.high = 0;
+    line = get_next_line(map.fd);
+    map.len = strlen_map(line);
     while (line)
     {
-        t_so_long->map.high++;
+        map.high++;
         free(line);
-        line = get_next_line(t_so_long->map.fd);
+        line = get_next_line(map.fd);
         if (!line)
             break ;
         len = strlen_map(line);
-        if (len != t_so_long->map.len)
+        if (len != map.len)
         {
             free(line);
             line = NULL;
@@ -50,11 +50,4 @@ int map_check(t_so_long *t_so_long)
         }
     }
     return (1);
-}
-
-int main()
-{
-    t_so_long t_so_long;
-    t_so_long.test = "./maps/test.txt";
-    printf("%d", map_check(&t_so_long));
 }
