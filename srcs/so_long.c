@@ -6,58 +6,38 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 22:05:08 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/13 18:31:59 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:38:51 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int error_message(int i)
+int declaration(t_data *data)
 {
-    write (1, "Error\n", 7);
-    if (i == 0)
-        write(1, FEW_ARG, 29);
-    else if (i == 1)
-        write(1, MUCH_ARG, 21);
-    else if (i == 2)
-        write(1, INV_MAP, 41);
-    return (0);
+    data->collec.count = 0;
+    data->exit.count = 0;
+    data->exit.x = 0;
+    data->exit.y = 0;
+    data->map.fd = 0;
+    data->map.len = 0;
+    data->map.high = 0;
+    data->player.count = 0;
+    data->player.x = 0;
+    data->player.y = 0;
+    return (1);
 }
-
-// int mlx(void)
-// {
-//     void    *mlx;
-//     void    *mlx_win;
-//     t_data  img;
-//     int     width;
-//     int     height;
-//     int     x;
-//     int     y;
-
-//     mlx = mlx_init();
-//     if(!mlx)
-//         return (0);
-//     width = 1500;
-//     height = 1000;
-//     mlx_win = mlx_new_window(mlx, width, height, "Hello World!");
-//     img.img = mlx_new_image(mlx, width, height);
-//     img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_len, &img.endian);
-//     x = 0;
-//     y = 0;
-//     mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-//     mlx_loop(mlx);
-// }
 
 int main(int ac, char *av[])
 {
-    t_so_long   so_long;
-    
+    t_data   data;
+
     if (ac < 2)
-        return (error_message(0));
+        return (error_message(FEW_ARG));
     else if (ac > 2)
-        return (error_message(1));
-    so_long.map.name = av[1];
-    if (map_check(&so_long) == -1)
-        return (error_message(2));
+        return (error_message(MUCH_ARG));
+    declaration(&data);
+    data.map.name = av[1];
+    if (map_check(&data) == -1)
+        return (-1);
     return (1);
 }

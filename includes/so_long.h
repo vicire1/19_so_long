@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:56:03 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/13 19:17:59 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/14 18:24:57 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,28 @@
 # include <mlx.h>
 # include "./get_next_line.h"
 
-# define FEW_ARG "Path to the map is missing.\n"
-# define MUCH_ARG "Too much arguments.\n"
-# define INV_MAP "The map and/or the path are/is invalid.\n"
+# define FEW_ARG    "Path to the map is missing.\n"
+# define MUCH_ARG   "Too much arguments.\n"
+# define INV_CHAR   "There are some invalids characters in the map.\n"
+# define INV_WALL   "The map is not surrounded by '1'.\n"
+# define INV_CPE    "Check the amount of collectibles, players and exit.\n"
 
-typedef struct  s_data {
-    void    *img;
-    char    *addr;
-    int     bpp;
-    int     line_len;
-    int     endian;
-}               t_data;
+
+typedef struct  s_player {
+    int x;
+    int y;
+    int count;
+}               t_player;
+
+typedef struct  s_exit {
+    int x;
+    int y;
+    int count;
+}               t_exit;
+
+typedef struct  s_collec {
+    int count;
+}               t_collec;
 
 typedef struct  s_map {
     char    *name;
@@ -40,17 +51,18 @@ typedef struct  s_map {
     int     fd;
     int     len;
     int     high;
-    int     collec;
-    int     exit;
-    int     player;
 }               t_map;
 
-typedef struct  s_so_long {
-    t_map   map;
-}               t_so_long;
+typedef struct  s_data {
+    t_map       map;
+    t_player    player;
+    t_collec    collec;
+    t_exit      exit;
+}               t_data;
 
-int map_check(t_so_long *so_long);
-int freenull(char *str);
+int map_check(t_data *data);
+int freetab(char **str, int bool, char *mess);
 int strlen_map(char *str);
+int error_message(char *str);
 
 #endif
