@@ -6,25 +6,25 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:51:59 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/14 17:36:36 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/16 16:20:03 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int freetab(char **str, int bool, char *mess)
+int freetab(t_data *data, int bool, char *mess)
 {
     int i;
 
     i = 0;
-    while (str[i])
+    while (data->map.layout[i])
     {
-        free(str[i]);
-        str[i] = NULL;
+        free(data->map.layout[i]);
+        data->map.layout[i] = NULL;
         i++;
     }
-    free(str);
-    str = NULL;
+    free(data->map.layout);
+    data->map.layout = NULL;
     if (bool == 1)
         error_message(mess);
     return (-1);
