@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:56:03 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/16 16:53:06 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:15:47 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,10 @@
 
 
 typedef struct  s_player {
-    int x;
-    int y;
     int count;
 }               t_player;
 
 typedef struct  s_exit {
-    int x;
-    int y;
     int count;
 }               t_exit;
 
@@ -63,17 +59,25 @@ typedef struct  s_xpm {
     void    *collec;
 }               t_xpm;
 
+typedef struct  s_mlx {
+    void    *ptr;
+    void    *win;
+}               t_mlx;
+
+
 typedef struct  s_data {
     t_map       map;
     t_player    player;
     t_collec    collec;
     t_exit      exit;
     t_xpm       xpm;
+    t_mlx       mlx;
 }               t_data;
 
 int map_check(t_data *data);
-int freetab(t_data *data, int bool, char *mess);
+int freetab(t_data *data, int boolean, char *mess);
 int strlen_map(char *str);
 int error_message(char *str);
+int	render_map(t_data *data);
 
 #endif

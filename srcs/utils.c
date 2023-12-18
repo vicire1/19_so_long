@@ -6,13 +6,13 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:51:59 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/16 16:20:03 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/18 17:45:35 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int freetab(t_data *data, int bool, char *mess)
+int freetab(t_data *data, int boolean, char *mess)
 {
     int i;
 
@@ -25,7 +25,7 @@ int freetab(t_data *data, int bool, char *mess)
     }
     free(data->map.layout);
     data->map.layout = NULL;
-    if (bool == 1)
+    if (boolean == 1)
         error_message(mess);
     return (-1);
 }
@@ -49,7 +49,7 @@ int error_message(char *str)
     i = 0;
     if (!str)
         return (0);
-    write (1, "Error\n", 7);
+    write (1, "Error.\n", 8);
     while(str[i])
     {
         write(1, &str[i], 1);
