@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:56:03 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/18 19:15:47 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/19 13:17:03 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
-# include <math.h>
 # include <mlx.h>
 # include "./get_next_line.h"
 
@@ -32,10 +31,14 @@
 
 typedef struct  s_player {
     int count;
+    int x;
+    int y;
 }               t_player;
 
 typedef struct  s_exit {
     int count;
+    int x;
+    int y;
 }               t_exit;
 
 typedef struct  s_collec {
@@ -79,5 +82,10 @@ int freetab(t_data *data, int boolean, char *mess);
 int strlen_map(char *str);
 int error_message(char *str);
 int	render_map(t_data *data);
+int	put_background(t_data *data);
+int put_wall(t_data *data);
+int put_player(t_data *data);
+int put_exit(t_data *data);
+int put_collec(t_data *data);
 
 #endif
