@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 22:05:08 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/19 13:19:38 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:25:21 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int main(int ac, char *av[])
     data.map.name = av[1];
     if (map_check(&data) == -1)
         return (-1);
-    render_map(&data);
+    if (render_map(&data) == -1)
+        return (-1);
     return (1);
 }

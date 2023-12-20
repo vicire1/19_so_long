@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:56:03 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/19 13:17:03 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:27:09 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,9 @@ int put_wall(t_data *data);
 int put_player(t_data *data);
 int put_exit(t_data *data);
 int put_collec(t_data *data);
+int escape(int keycode, t_data *data);
+int key_press(int keycode, t_data *data);
+
+
 
 #endif
