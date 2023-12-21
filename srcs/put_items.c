@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 13:14:34 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/19 13:15:45 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:20:01 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ int	put_background(t_data *data)
 	int x;
 	int y;
 
-	x = 0;
-	while (x < (data->map.len * 100))
+	y = 0;
+	while (y < (data->map.high * 100))
 	{
-		y = 0;
-		while (y < (data->map.high * 100))
+		x = 0;
+		while (x < (data->map.len * 100))
 		{
 			mlx_put_image_to_window(data->mlx.ptr, data->mlx.win, data->xpm.background, x, y);
-			y += 100;
+			x += 100;
 		}
-		x += 100;
+		y += 100;
 	}
 	return (1);
 }
@@ -36,17 +36,17 @@ int put_wall(t_data *data)
 	int x;
 	int y;
 
-	x = 0;
-	while (x < (data->map.len * 100))
+	y = 0;
+	while (y < (data->map.high * 100))
 	{
-		y = 0;
-		while (y < (data->map.high * 100))
+		x = 0;
+		while (x < (data->map.len * 100))
 		{
 			if (data->map.layout && data->map.layout[y / 100][x / 100] == '1')
 				mlx_put_image_to_window(data->mlx.ptr, data->mlx.win, data->xpm.wall, x, y);
-			y += 100;
+			x += 100;
 		}
-		x += 100;
+		y += 100;
 	}
 	return (1);
 }
@@ -56,11 +56,11 @@ int put_player(t_data *data)
 	int x;
 	int y;
 
-	x = 0;
-	while (x < (data->map.len * 100))
+	y = 0;
+	while (y < (data->map.high * 100))
 	{
-		y = 0;
-		while (y < (data->map.high * 100))
+		x = 0;
+		while (x < (data->map.len * 100))
 		{
 			if (data->map.layout && data->map.layout[y / 100][x / 100] == 'P')
 			{
@@ -68,9 +68,9 @@ int put_player(t_data *data)
 				data->player.x = x / 100;
 				data->player.y = y / 100;
 			}
-			y += 100;
+			x += 100;
 		}
-		x += 100;
+		y += 100;
 	}
 	return (1);
 }
@@ -80,11 +80,11 @@ int put_exit(t_data *data)
 	int x;
 	int y;
 
-	x = 0;
-	while (x < (data->map.len * 100))
+	y = 0;
+	while (y < (data->map.high * 100))
 	{
-		y = 0;
-		while (y < (data->map.high * 100))
+		x = 0;
+		while (x < (data->map.len * 100))
 		{
 			if (data->map.layout && data->map.layout[y / 100][x / 100] == 'E')
 			{
@@ -92,9 +92,9 @@ int put_exit(t_data *data)
 				data->exit.x = x / 100;
 				data->exit.y = y / 100;
 			}
-			y += 100;
+			x += 100;
 		}
-		x += 100;
+		y += 100;
 	}
 	return (1);
 }
@@ -104,17 +104,17 @@ int put_collec(t_data *data)
 	int x;
 	int y;
 
-	x = 0;
-	while (x < (data->map.len * 100))
+	y = 0;
+	while (y < (data->map.high * 100))
 	{
-		y = 0;
-		while (y < (data->map.high * 100))
+		x = 0;
+		while (x < (data->map.len * 100))
 		{
 			if (data->map.layout && data->map.layout[y / 100][x / 100] == 'C')
 				mlx_put_image_to_window(data->mlx.ptr, data->mlx.win, data->xpm.collec, x, y);
-			y += 100;
+			x += 100;
 		}
-		x += 100;
+		y += 100;
 	}
 	return (1);
 }

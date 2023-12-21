@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 16:10:31 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/20 19:28:29 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/21 11:35:46 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ int	render_map(t_data *data)
 	put_collec(data);
 	put_exit(data);
 	put_player(data);
-	if (mlx_hook(data->mlx.win, 17, 0, &escape, data) == -1)
-		return (-1);
+	mlx_hook(data->mlx.win, 17, 0, &escape, data);
 	mlx_hook(data->mlx.win, 2, 0, &key_press, data);
 	mlx_loop(data->mlx.ptr);
 	return (1);
