@@ -6,15 +6,19 @@
 #    By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/10 21:59:57 by vdecleir          #+#    #+#              #
-#    Updated: 2023/12/20 19:23:09 by vdecleir         ###   ########.fr        #
+#    Updated: 2023/12/22 21:29:56 by vdecleir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		so_long
 
-CC =		gcc
+CC =		cc
+
+RM =		rn -rf
 
 CFLAGS =	-Wall -Wextra -Werror
+
+MLXFLAFS =	-lmlx -framework OpenGL -framework AppKit
 
 SRCS =		srcs/gnl/get_next_line.c \
 			srcs/gnl/get_next_line_utils.c \
@@ -27,19 +31,37 @@ SRCS =		srcs/gnl/get_next_line.c \
 
 OBJS = 		$(SRCS:.c=.o)
 
+FT_PRINTF		= libftprintf.a
+
+FT_PRINTF_PATH	= ./ft_printf
+
+MLX				= libmlx.a
+
+MLX_PATH		= ./mlx
+
 all:		$(NAME)
 
 %.o:		%.c
 			$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME):	$(OBJS)
-			$(CC) $(OBJS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+$(NAME):	$(OBJS) $(FT_PRINTF) $(MLX)
+			$(CC) $(OBJS) $(MLXFLAFS) -o $(NAME) $(FT_PRINTF) $(MLX)
+
+$(FT_PRINTF):
+			$(MAKE) -C $(FT_PRINTF_PATH)
+			mv $(FT_PRINTF_PATH)/$(FT_PRINTF) .
+
+$(MLX):
+			$(MAKE) -C $(MLX_PATH)
+			mv $(MLX_PATH)/$(MLX) .
 
 clean:
-			rm -rf $(OBJS)
+			$(MAKE) clean -C $(FT_PRINTF_PATH)
+			$(MAKE) clean -C $(MLX_PATH)
+			$(RM) $(OBJS)
 
 fclean: 	clean
-			rm -rf $(NAME)
+			$(RM) $(NAME) $(FT_PRINTF) $(MLX)
 
 re: 		fclean all
 

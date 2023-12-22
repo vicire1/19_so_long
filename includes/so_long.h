@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:56:03 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/22 19:16:52 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/22 23:11:26 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <mlx.h>
+# include "../ft_printf/ft_printf.h"
 # include "./get_next_line.h"
 
 # define FEW_ARG    "Path to the map is missing.\n"
