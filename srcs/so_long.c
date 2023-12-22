@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 22:05:08 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/21 12:55:32 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/22 19:21:36 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int declaration(t_data *data)
     data->player.x = 0;
     data->player.y = 0;
     data->collec.game = 0;
+    data->count_moves = 0;
+    data->player.look = 0;
     return (1);
 }
 int main(int ac, char *av[])

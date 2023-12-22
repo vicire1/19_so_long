@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:56:03 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/21 12:55:09 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/22 19:16:52 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,17 @@
 # define INV_WALL   "The map is not surrounded by '1'.\n"
 # define INV_CPE    "Check the amount of collectibles, players and exit.\n"
 # define INV_MAP    "The map is not a rectangular.\n"
-
+# define PXL        100
+# define D          2
+# define A          0
+# define W          13
+# define S          1
 
 typedef struct  s_player {
     int count;
     int x;
     int y;
+    int look;
 }               t_player;
 
 typedef struct  s_exit {
@@ -57,8 +62,9 @@ typedef struct  s_map {
 typedef struct  s_xpm {
     void    *player_l;
     void    *player_r;
-    void    *exit;
-    void    *background;
+    void    *exit_o;
+    void    *exit_c;
+    void    *bg;
     void    *wall;
     void    *collec;
 }               t_xpm;
@@ -76,6 +82,7 @@ typedef struct  s_data {
     t_exit      exit;
     t_xpm       xpm;
     t_mlx       mlx;
+    int         count_moves;
 }               t_data;
 
 int map_check(t_data *data);
@@ -83,11 +90,7 @@ int freetab(t_data *data, int boolean, char *mess);
 int strlen_map(char *str);
 int error_message(char *str);
 int	render_map(t_data *data);
-int	put_background(t_data *data);
-int put_wall(t_data *data);
-int put_player(t_data *data);
-int put_exit(t_data *data);
-int put_collec(t_data *data);
+int	put_map(t_data *data);
 int escape(int keycode, t_data *data);
 int key_press(int keycode, t_data *data);
 
