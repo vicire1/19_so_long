@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:55:51 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/23 19:16:19 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:24:25 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	move(t_data *data, int x, int y, int orientation)
 	if (data->map.layout[y][x] == '1')
 		return (1);
 	data->count_moves++;
+	ft_printf("Number of moves : %d\n", data->count_moves);
 	if (data->map.layout[y][x] == 'X')
 		return (escape(0, data, -1));
 	if (data->map.layout[y][x] == 'C')
@@ -57,7 +58,6 @@ int	move(t_data *data, int x, int y, int orientation)
 	orientation_player(data, x, y, orientation);
 	data->player.x = x;
 	data->player.y = y;
-	ft_printf("Number of moves : %d\n", data->count_moves);
 	if (data->collec.count == data->collec.game && data->player.x == data->esc.x
 		&& data->player.y == data->esc.y)
 		escape(0, data, 1);
