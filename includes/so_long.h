@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:56:03 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/22 23:11:26 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:09:14 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define INV_WALL   "The map is not surrounded by '1'.\n"
 # define INV_CPE    "Check the amount of collectibles, players and exit.\n"
 # define INV_MAP    "The map is not a rectangular.\n"
-# define PXL        100
+# define PXL        64
 # define D          2
 # define A          0
 # define W          13
@@ -38,7 +38,6 @@ typedef struct  s_player {
     int count;
     int x;
     int y;
-    int look;
 }               t_player;
 
 typedef struct  s_exit {
@@ -52,6 +51,12 @@ typedef struct  s_collec {
     int game;
 }               t_collec;
 
+typedef struct  s_ennemy
+{
+    int count;
+}               t_ennemy;
+
+
 typedef struct  s_map {
     char    *name;
     char    **layout;
@@ -61,13 +66,21 @@ typedef struct  s_map {
 }               t_map;
 
 typedef struct  s_xpm {
-    void    *player_l;
-    void    *player_r;
-    void    *exit_o;
-    void    *exit_c;
+    void    *plr_l;
+    void    *plr_r;
+    void    *plr_u;
+    void    *plr_d;
+    void    *esc_o;
+    void    *esc_c;
     void    *bg;
     void    *wall;
-    void    *collec;
+    void    *collec1;
+    void    *collec2;
+    void    *collec3;
+    void    *collec4;
+    void    *collec5;
+    void    *ennemy1;
+    void    *ennemy2;
 }               t_xpm;
 
 typedef struct  s_mlx {
@@ -80,10 +93,12 @@ typedef struct  s_data {
     t_map       map;
     t_player    player;
     t_collec    collec;
-    t_exit      exit;
+    t_exit      esc;
     t_xpm       xpm;
     t_mlx       mlx;
+    t_ennemy    ennemy;
     int         count_moves;
+    int         anim_collec;
 }               t_data;
 
 int map_check(t_data *data);
@@ -92,7 +107,9 @@ int strlen_map(char *str);
 int error_message(char *str);
 int	render_map(t_data *data);
 int	put_map(t_data *data);
-int escape(int keycode, t_data *data);
+int escape(int keycode, t_data *data, int i);
 int key_press(int keycode, t_data *data);
+int	put_image(t_data *data, void *xpm, int x, int y);
+int	anim(t_data *data);
 
 #endif
