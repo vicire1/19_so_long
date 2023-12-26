@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:56:03 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/26 11:33:13 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/26 17:28:54 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ typedef struct  s_data {
 }               t_data;
 
 int map_check(t_data *data);
-int freetab(t_data *data, int boolean, char *mess);
+int freetab(t_data *data, int high, int boolean, char *mess);
 int strlen_map(char *str);
 int error_message(char *str);
 int	render_map(t_data *data);
@@ -110,5 +110,6 @@ int escape(int keycode, t_data *data, int i);
 int key_press(int keycode, t_data *data);
 int	put_image(t_data *data, void *xpm, int x, int y);
 int	anim(t_data *data);
+//char	*ft_itoa(int n);
 
 #endif

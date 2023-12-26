@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:55:51 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/26 11:33:26 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/26 17:28:44 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ int	escape(int keycode, t_data *data, int i)
 	(void)keycode;
 	if (i == -1)
 		ft_printf("WASTED\n");
-		printf("WASTED\n");
 	if (i == 1)
 		ft_printf("You Won !\n");
-		printf("You Won !\n");
+	freetab(data, data->map.high, 0, "");
 	mlx_destroy_window(data->mlx.ptr, data->mlx.win);
-	freetab(data, 0, "");
+	system("leaks so_long");
 	exit(0);
 }
 
@@ -44,8 +43,8 @@ static int	move(t_data *data, int x, int y, int orientation)
 	if (data->map.layout[y][x] == '1')
 		return (1);
 	data->count_moves++;
-	printf("Number of moves : %d\n", data->count_moves);
 	ft_printf("Number of moves : %d\n", data->count_moves);
+//	mlx_string_put(data->mlx.ptr, data->mlx.win, 10, 10, 0, ft_itoa(data->count_moves));
 	if (data->map.layout[y][x] == 'X')
 		return (escape(0, data, -1));
 	if (data->map.layout[y][x] == 'C')
