@@ -6,63 +6,58 @@
 #    By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/10 21:59:57 by vdecleir          #+#    #+#              #
-#    Updated: 2023/12/26 11:35:58 by vdecleir         ###   ########.fr        #
+#    Updated: 2023/12/26 18:08:26 by vdecleir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =		so_long
+NAME = so_long
 
-CC =		cc
+CC = cc
 
-RM =		rm -rf
+RM = rm -rf
 
-CFLAGS =	-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
-MLXFLAGS =	-L. -lmlx -framework OpenGL -framework AppKit
+MLXFLAGS = -L. -lmlx -framework OpenGL -framework AppKit
 
-SRCS =		srcs/gnl/get_next_line.c \
-			srcs/gnl/get_next_line_utils.c \
-			srcs/map_check.c \
-			srcs/render_map.c \
-			srcs/main.c \
-			srcs/utils.c \
-			srcs/hooks.c \
-			srcs/anim.c \
+SRCS = srcs/gnl/get_next_line.c \
+       srcs/gnl/get_next_line_utils.c \
+       srcs/map_check.c \
+       srcs/render_map.c \
+       srcs/main.c \
+       srcs/utils.c \
+       srcs/hooks.c \
+       srcs/anim.c
 
-OBJS = 		$(SRCS:.c=.o)
+OBJ_DIR = objets
 
-FT_PRINTF		= libftprintf.a
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
-FT_PRINTF_PATH	= ./ft_printf
+FT_PRINTF = libftprintf.a
 
-#MLX				= libmlx.a
+FT_PRINTF_PATH = ./ft_printf
 
-#MLX_PATH		= ./mlx
-	
-all:		$(NAME)
+all: $(NAME)
 
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-%.o:		%.c
-			$(CC) $(CFLAGS) -c $< -o $@
-
-$(NAME):	$(OBJS) $(FT_PRINTF)
-			$(CC) $(OBJS) $(MLXFLAGS) -o $(NAME) $(FT_PRINTF)
+$(NAME): $(OBJS) $(FT_PRINTF)
+	$(CC) $(OBJS) $(MLXFLAGS) -o $(NAME) $(FT_PRINTF)
+	@echo "\n\033[1;32mCompilation complete.\033[0m"
 
 $(FT_PRINTF):
-			$(MAKE) -C $(FT_PRINTF_PATH)
-			mv $(FT_PRINTF_PATH)/$(FT_PRINTF) .
-
-#$(MLX):
-#			$(MAKE) -C $(MLX_PATH)
-#			mv $(MLX_PATH)/$(MLX) .
+	$(MAKE) -C $(FT_PRINTF_PATH)
+	mv $(FT_PRINTF_PATH)/$(FT_PRINTF) .
 
 clean:
-			$(MAKE) clean -C $(FT_PRINTF_PATH)
-			$(RM) $(OBJS)
+	$(MAKE) clean -C $(FT_PRINTF_PATH)
+	$(RM) $(OBJ_DIR)
 
-fclean: 	clean
-			$(RM) $(NAME) $(FT_PRINTF)
+fclean: clean
+	$(RM) $(NAME) $(FT_PRINTF)
 
-re: 		fclean all
+re: fclean all
 
-.PHONY:     all clean fclean re
+.PHONY: all clean fclean re
