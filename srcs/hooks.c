@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:55:51 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/23 19:24:25 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/26 11:33:26 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@ int	escape(int keycode, t_data *data, int i)
 	(void)keycode;
 	if (i == -1)
 		ft_printf("WASTED\n");
+		printf("WASTED\n");
 	if (i == 1)
 		ft_printf("You Won !\n");
+		printf("You Won !\n");
 	mlx_destroy_window(data->mlx.ptr, data->mlx.win);
+	freetab(data, 0, "");
 	exit(0);
 }
 
-int	orientation_player(t_data *data, int x, int y, int orientation)
+static int	orientation_player(t_data *data, int x, int y, int orientation)
 {
 	if (orientation == 0)
 		put_image(data, data->xpm.plr_l, x * PXL, y * PXL);
@@ -36,11 +39,12 @@ int	orientation_player(t_data *data, int x, int y, int orientation)
 	return (1);
 }
 
-int	move(t_data *data, int x, int y, int orientation)
+static int	move(t_data *data, int x, int y, int orientation)
 {
 	if (data->map.layout[y][x] == '1')
 		return (1);
 	data->count_moves++;
+	printf("Number of moves : %d\n", data->count_moves);
 	ft_printf("Number of moves : %d\n", data->count_moves);
 	if (data->map.layout[y][x] == 'X')
 		return (escape(0, data, -1));

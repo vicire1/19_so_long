@@ -6,13 +6,13 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:57:45 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/23 19:16:38 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/24 20:52:07 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	check_line(char *str, t_data *data, int a)
+static int	check_line(char *str, t_data *data, int a)
 {
 	int	i;
 
@@ -38,7 +38,7 @@ int	check_line(char *str, t_data *data, int a)
 	return (0);
 }
 
-int	tab_size(t_data *data)
+static int	tab_size(t_data *data)
 {
 	char	*line;
 
@@ -55,7 +55,7 @@ int	tab_size(t_data *data)
 	return (data->map.high);
 }
 
-int	map_in_tab(t_data *data)
+static int	map_in_tab(t_data *data)
 {
 	int	i;
 	int	len;

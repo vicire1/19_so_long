@@ -6,13 +6,13 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 16:10:31 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/23 19:16:46 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/24 20:52:54 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	put_items(t_data *data, int x, int y)
+static int	put_items(t_data *data, int x, int y)
 {
 	put_image(data, data->xpm.bg, x, y);
 	if (data->map.layout && data->map.layout[y / PXL][x / PXL] == '1')
@@ -36,7 +36,7 @@ int	put_items(t_data *data, int x, int y)
 	return (1);
 }
 
-int	put_map(t_data *data)
+static int	put_map(t_data *data)
 {
 	int	x;
 	int	y;
@@ -74,7 +74,7 @@ int	xpm_in_struct2(t_data *data, int w, int h)
 	return (1);
 }
 
-int	xpm_in_struct(t_data *data)
+static int	xpm_in_struct(t_data *data)
 {
 	int	w;
 	int	h;

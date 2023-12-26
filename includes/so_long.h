@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:56:03 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/23 19:09:14 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/26 11:33:13 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@
 # define INV_CPE    "Check the amount of collectibles, players and exit.\n"
 # define INV_MAP    "The map is not a rectangular.\n"
 # define PXL        64
-# define D          2
 # define A          0
-# define W          13
 # define S          1
+# define D          2
+# define W          13
 
 typedef struct  s_player {
     int count;
@@ -106,7 +106,6 @@ int freetab(t_data *data, int boolean, char *mess);
 int strlen_map(char *str);
 int error_message(char *str);
 int	render_map(t_data *data);
-int	put_map(t_data *data);
 int escape(int keycode, t_data *data, int i);
 int key_press(int keycode, t_data *data);
 int	put_image(t_data *data, void *xpm, int x, int y);

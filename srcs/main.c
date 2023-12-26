@@ -6,13 +6,13 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 22:05:08 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/23 19:18:44 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/24 20:51:39 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	declaration(t_data *data)
+static int	declaration(t_data *data)
 {
 	data->collec.count = 0;
 	data->collec.game = 0;

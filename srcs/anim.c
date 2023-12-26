@@ -6,13 +6,13 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:14:17 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/23 19:18:24 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/24 20:55:43 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	anim_ennemy(t_data *data, int x, int y)
+static int	anim_ennemy(t_data *data, int x, int y)
 {
 	put_image(data, data->xpm.bg, x, y);
 	if (data->anim_collec > 25)
@@ -22,7 +22,7 @@ int	anim_ennemy(t_data *data, int x, int y)
 	return (1);
 }
 
-int	anim_coin(t_data *data, int x, int y)
+static int	anim_coin(t_data *data, int x, int y)
 {
 	put_image(data, data->xpm.bg, x, y);
 	if (data->anim_collec > 40)
@@ -38,7 +38,7 @@ int	anim_coin(t_data *data, int x, int y)
 	return (1);
 }
 
-int	cointype(t_data *data)
+static int anim_loop(t_data *data)
 {
 	int	x;
 	int	y;
@@ -62,7 +62,7 @@ int	cointype(t_data *data)
 
 int	anim(t_data *data)
 {
-	cointype(data);
+	anim_loop(data);
 	if (data->anim_collec == 50)
 		data->anim_collec = 0;
 	data->anim_collec++;
