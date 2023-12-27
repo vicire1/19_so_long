@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:57:45 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/27 18:17:04 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:29:01 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static int	map_in_tab(t_data *data)
 		if (!data->map.layout[i])
 			break ;
 		if (strlen_map(data->map.layout[i]) != data->map.len)
-			return (freetab(data, i, 1, INV_MAP));
+			return (freetab(data, i + 1, 1, INV_MAP));
 	}
 	close(data->map.fd);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 22:05:08 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/27 17:37:32 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:25:01 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ int	main(int ac, char *av[])
 	declaration(&data);
 	data.map.name = av[1];
 	if (map_check(&data) == -1)
+	{
+		system("leaks so_long");
 		return (-1);
+	}
 	if (render_map(&data) == -1)
 		return (-1);
 	return (1);
