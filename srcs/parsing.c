@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:16:57 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/27 17:57:04 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:06:57 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int check_playable(t_data *data)
     cpy_parsing_map(data);
     parsing(data, data->player.x, data->player.y);
     freepars(data, data->map.high);
-    printf("%d\n%d\n", data->pars.collec, data->pars.exit);
     if (data->collec.count != data->pars.collec || data->pars.exit != 1)
         return (-1);
     return (1);

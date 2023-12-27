@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:57:45 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/27 17:42:41 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:17:04 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ int	map_check(t_data *data)
 	i = 0;
 	if (map_in_tab(data) == -1)
 		return (-1);
+	if (data->map.high > 21 || data->map.len > 40)
+		return (freetab(data, data->map.high, 1, TOO_BIG));
 	if (data->esc.count != 1 || data->player.count != 1
 		|| data->collec.count < 1)
 		return (freetab(data, data->map.high, 1, INV_CPE));

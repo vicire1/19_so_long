@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:56:03 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/27 17:32:10 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:17:39 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define INV_CPE    "Check the amount of collectibles, players and exit.\n"
 # define INV_MAP    "The map is not a rectangular.\n"
 # define PARS       "It is not possible to finish this map.\n"
+# define TOO_BIG    "The map is too big.\n"
 # define PXL        64
 # define A          0
 # define S          1
