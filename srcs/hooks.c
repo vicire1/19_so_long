@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:55:51 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/26 17:28:44 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/27 14:12:00 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ int	escape(int keycode, t_data *data, int i)
 	mlx_destroy_window(data->mlx.ptr, data->mlx.win);
 	system("leaks so_long");
 	exit(0);
+}
+
+int	cross_escape(t_data *data)
+{
+	escape(0, data, 0);
+	return (1);
 }
 
 static int	orientation_player(t_data *data, int x, int y, int orientation)
@@ -44,7 +50,6 @@ static int	move(t_data *data, int x, int y, int orientation)
 		return (1);
 	data->count_moves++;
 	ft_printf("Number of moves : %d\n", data->count_moves);
-//	mlx_string_put(data->mlx.ptr, data->mlx.win, 10, 10, 0, ft_itoa(data->count_moves));
 	if (data->map.layout[y][x] == 'X')
 		return (escape(0, data, -1));
 	if (data->map.layout[y][x] == 'C')
@@ -78,7 +83,7 @@ int	key_press(int keycode, t_data *data)
 		move(data, data->player.x, data->player.y - 1, 2);
 	if (keycode == S)
 		move(data, data->player.x, data->player.y + 1, 3);
-	if (keycode == 53)
+	if (keycode == ESC)
 		escape(keycode, data, 0);
 	return (0);
 }

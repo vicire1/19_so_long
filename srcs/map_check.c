@@ -6,32 +6,33 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:57:45 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/26 17:14:39 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:42:41 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static int	check_line(char *str, t_data *data, int a)
+static int	check_line(char *str, t_data *data, int i, int j)
 {
-	int	i;
-
-	i = 0;
-	while (i < data->map.len)
+	while (j < data->map.len)
 	{
-		if (a == 0 && str[i] != '1')
+		if (i == 0 && str[j] != '1')
 			return (error_message(INV_WALL));
-		else if (str[i] == 'C')
+		else if (str[j] == 'C')
 			data->collec.count++;
-		else if (str[i] == 'P')
+		else if (str[j] == 'P')
+		{
+			data->player.x = j;
+			data->player.y = i;	
 			data->player.count++;
-		else if (str[i] == 'E')
+		}
+		else if (str[j] == 'E')
 			data->esc.count++;
-		else if (str[i] == 'X')
+		else if (str[j] == 'X')
 			data->ennemy.count++;
-		else if (str[i] != '0' && str[i] != '1')
+		else if (str[j] != '0' && str[j] != '1')
 			return (error_message(INV_CHAR));
-		i++;
+		j++;
 	}
 	if (str[0] != '1' || str[data->map.len - 1] != '1')
 		return (error_message(INV_WALL));
@@ -60,7 +61,9 @@ static int	tab_size(t_data *data)
 static int	map_in_tab(t_data *data)
 {
 	int	i;
+	int	j;
 
+	j = 0;
 	data->map.layout = malloc(sizeof(char *) * (tab_size(data) + 1));
 	data->map.fd = open(data->map.name, O_RDONLY);
 	if (data->map.fd == -1 || !data->map.layout)
@@ -70,7 +73,7 @@ static int	map_in_tab(t_data *data)
 	data->map.len = strlen_map(data->map.layout[i]);
 	while (data->map.layout[i])
 	{
-		if (check_line(data->map.layout[i], data, i) == -1)
+		if (check_line(data->map.layout[i], data, i, j) == -1)
 			return (freetab(data, i, 0, ""));
 		i++;
 		data->map.layout[i] = get_next_line(data->map.fd);
@@ -99,5 +102,7 @@ int	map_check(t_data *data)
 			return (freetab(data, data->map.high, 1, INV_WALL));
 		i++;
 	}
+	if (check_playable(data) == -1)
+		return (freetab(data, data->map.high, 1, PARS));
 	return (1);
 }

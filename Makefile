@@ -6,7 +6,7 @@
 #    By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/10 21:59:57 by vdecleir          #+#    #+#              #
-#    Updated: 2023/12/26 18:08:26 by vdecleir         ###   ########.fr        #
+#    Updated: 2023/12/27 15:16:28 by vdecleir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRCS = srcs/gnl/get_next_line.c \
        srcs/main.c \
        srcs/utils.c \
        srcs/hooks.c \
-       srcs/anim.c
+       srcs/anim.c \
+	   srcs/parsing.c
 
 OBJ_DIR = objets
 

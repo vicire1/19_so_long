@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:56:03 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/26 17:28:54 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:32:10 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@
 # define INV_WALL   "The map is not surrounded by '1'.\n"
 # define INV_CPE    "Check the amount of collectibles, players and exit.\n"
 # define INV_MAP    "The map is not a rectangular.\n"
+# define PARS       "It is not possible to finish this map.\n"
 # define PXL        64
 # define A          0
 # define S          1
 # define D          2
 # define W          13
+# define ESC        53
 
 typedef struct  s_player {
     int count;
@@ -88,6 +90,12 @@ typedef struct  s_mlx {
     void    *win;
 }               t_mlx;
 
+typedef struct s_pars {
+    int     collec;
+    int     exit;
+    char    **map;
+}              t_pars;
+
 
 typedef struct  s_data {
     t_map       map;
@@ -97,6 +105,7 @@ typedef struct  s_data {
     t_xpm       xpm;
     t_mlx       mlx;
     t_ennemy    ennemy;
+    t_pars      pars;
     int         count_moves;
     int         anim_collec;
 }               t_data;
@@ -110,6 +119,9 @@ int escape(int keycode, t_data *data, int i);
 int key_press(int keycode, t_data *data);
 int	put_image(t_data *data, void *xpm, int x, int y);
 int	anim(t_data *data);
+int	cross_escape(t_data *data);
+int check_playable(t_data *data);
+
 //char	*ft_itoa(int n);
 
 #endif

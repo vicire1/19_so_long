@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 16:10:31 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/24 20:52:54 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:54:01 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,7 @@ static int	put_items(t_data *data, int x, int y)
 	if (data->map.layout && data->map.layout[y / PXL][x / PXL] == '1')
 		put_image(data, data->xpm.wall, x, y);
 	else if (data->map.layout && data->map.layout[y / PXL][x / PXL] == 'P')
-	{
 		put_image(data, data->xpm.plr_d, x, y);
-		data->player.x = x / PXL;
-		data->player.y = y / PXL;
-	}
 	else if (data->map.layout && data->map.layout[y / PXL][x / PXL] == 'E')
 	{
 		put_image(data, data->xpm.esc_c, x, y);
@@ -106,7 +102,7 @@ int	render_map(t_data *data)
 			(data->map.high * PXL), "So_Long");
 	xpm_in_struct(data);
 	put_map(data);
-	mlx_hook(data->mlx.win, 17, 0, &escape, data);
+	mlx_hook(data->mlx.win, 17, 0, &cross_escape, data);
 	mlx_hook(data->mlx.win, 2, 0, &key_press, data);
 	mlx_loop_hook(data->mlx.ptr, &anim, data);
 	mlx_loop(data->mlx.ptr);

@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 22:05:08 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/24 20:51:39 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:37:32 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	declaration(t_data *data)
 	data->count_moves = 0;
 	data->anim_collec = 0;
 	data->ennemy.count = 0;
+	data->pars.collec = 0;
+	data->pars.exit = 0;
 	return (1);
 }
 
