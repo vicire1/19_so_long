@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 22:05:08 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/28 20:15:12 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/28 20:53:39 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	declaration(t_data *data)
 	return (1);
 }
 
-int	check_ber(char *str)
+static int	check_ber(char *str)
 {
 	int	i;
 
