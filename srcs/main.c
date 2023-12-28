@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 22:05:08 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/27 18:25:01 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/28 20:15:12 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@ static int	declaration(t_data *data)
 	return (1);
 }
 
+int	check_ber(char *str)
+{
+	int	i;
+
+	i = strlen_map(str);
+	if (str[i - 1] != 'r' || str[i - 2] != 'e' || str[i - 3] != 'b'
+		|| str[i - 4] != '.')
+		return (-1);
+	return (1);
+}
+
 int	main(int ac, char *av[])
 {
 	t_data	data;
@@ -41,6 +52,8 @@ int	main(int ac, char *av[])
 		return (error_message(FEW_ARG));
 	else if (ac > 2)
 		return (error_message(MUCH_ARG));
+	if (check_ber(av[1]) == -1)
+		return (error_message(BER_FILE));
 	declaration(&data);
 	data.map.name = av[1];
 	if (map_check(&data) == -1)
@@ -49,6 +62,9 @@ int	main(int ac, char *av[])
 		return (-1);
 	}
 	if (render_map(&data) == -1)
+	{
+		system("leaks so_long");
 		return (-1);
+	}
 	return (1);
 }

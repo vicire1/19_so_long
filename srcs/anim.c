@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:14:17 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/24 20:55:43 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/28 19:20:23 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	anim_coin(t_data *data, int x, int y)
 	return (1);
 }
 
-static int anim_loop(t_data *data)
+static int	anim_loop(t_data *data)
 {
 	int	x;
 	int	y;

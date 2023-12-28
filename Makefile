@@ -6,7 +6,7 @@
 #    By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/10 21:59:57 by vdecleir          #+#    #+#              #
-#    Updated: 2023/12/28 02:23:10 by vdecleir         ###   ########.fr        #
+#    Updated: 2023/12/28 18:54:07 by vdecleir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 FT_PRINTF = libftprintf.a
 
-MLX_PATH = ./ft_printf
+FT_PRINTF_PATH = ./ft_printf
 
 all: $(NAME)
 
@@ -54,7 +54,8 @@ $(NAME): $(OBJS) $(FT_PRINTF)
 
 $(FT_PRINTF):
 	$(MAKE) -C $(FT_PRINTF_PATH)
-	mv $(FT_PRINTF_PATH)/$(FT_PRINTF) .
+	cp $(FT_PRINTF_PATH)/$(FT_PRINTF) .
+	mv $(FT_PRINTF_PATH)/$(FT_PRINTF) $(NAME)
 
 clean:
 	$(MAKE) clean -C $(FT_PRINTF_PATH)

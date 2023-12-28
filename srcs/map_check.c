@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:57:45 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/28 02:12:02 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/28 19:17:37 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	check_line(char *str, t_data *data, int i, int j)
 		else if (str[j] == 'P')
 		{
 			data->player.x = j;
-			data->player.y = i;	
+			data->player.y = i;
 			data->player.count++;
 		}
 		else if (str[j] == 'E')
