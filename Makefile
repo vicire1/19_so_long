@@ -6,7 +6,7 @@
 #    By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/10 21:59:57 by vdecleir          #+#    #+#              #
-#    Updated: 2023/12/27 15:16:28 by vdecleir         ###   ########.fr        #
+#    Updated: 2023/12/28 02:23:10 by vdecleir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 FT_PRINTF = libftprintf.a
 
-FT_PRINTF_PATH = ./ft_printf
+MLX_PATH = ./ft_printf
 
 all: $(NAME)
 
@@ -47,6 +47,10 @@ $(OBJ_DIR)/%.o: %.c
 $(NAME): $(OBJS) $(FT_PRINTF)
 	$(CC) $(OBJS) $(MLXFLAGS) -o $(NAME) $(FT_PRINTF)
 	@echo "\n\033[1;32mCompilation complete.\033[0m"
+
+#$(MLX):
+#	$(MAKE) -C $(MLX_PATH)
+#	mv $(MLX_PATH)/$(MLX) .
 
 $(FT_PRINTF):
 	$(MAKE) -C $(FT_PRINTF_PATH)
