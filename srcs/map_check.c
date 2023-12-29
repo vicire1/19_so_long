@@ -6,13 +6,13 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:57:45 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/29 13:17:13 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:07:32 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static int	check_line(char *str, t_data *data, int i, int j)
+static int	check_line(char *str, t_data *data, size_t i, size_t j)
 {
 	while (j < data->map.len)
 	{
@@ -61,8 +61,8 @@ static int	tab_size(t_data *data)
 
 static int	map_in_tab(t_data *data)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	j = 0;
 	data->map.layout = malloc(sizeof(char *) * (tab_size(data) + 1));
@@ -88,7 +88,7 @@ static int	map_in_tab(t_data *data)
 
 int	map_check(t_data *data)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (map_in_tab(data) == -1)

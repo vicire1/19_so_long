@@ -6,15 +6,15 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:16:57 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/28 19:17:07 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:11:52 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static int	freepars(t_data *data, int high)
+static int	freepars(t_data *data, size_t high)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < high)
@@ -28,7 +28,7 @@ static int	freepars(t_data *data, int high)
 	return (-1);
 }
 
-static int	parsing(t_data *data, int x, int y)
+static int	parsing(t_data *data, size_t x, size_t y)
 {
 	if (x > 0 && x < data->map.len - 1 && y > 0 && y < data->map.high - 1)
 	{
@@ -57,8 +57,8 @@ static int	parsing(t_data *data, int x, int y)
 
 static int	cpy_parsing_map(t_data *data)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	data->pars.map = malloc(sizeof(char *) * (data->map.high + 1));

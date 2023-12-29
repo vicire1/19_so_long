@@ -6,13 +6,13 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:14:17 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/28 19:20:23 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/29 14:59:44 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static int	anim_ennemy(t_data *data, int x, int y)
+static int	anim_ennemy(t_data *data, size_t x, size_t y)
 {
 	put_image(data, data->xpm.bg, x, y);
 	if (data->anim_collec > 25)
@@ -22,7 +22,7 @@ static int	anim_ennemy(t_data *data, int x, int y)
 	return (1);
 }
 
-static int	anim_coin(t_data *data, int x, int y)
+static int	anim_coin(t_data *data, size_t x, size_t y)
 {
 	put_image(data, data->xpm.bg, x, y);
 	if (data->anim_collec > 40)
@@ -40,8 +40,8 @@ static int	anim_coin(t_data *data, int x, int y)
 
 static int	anim_loop(t_data *data)
 {
-	int	x;
-	int	y;
+	size_t	x;
+	size_t	y;
 
 	y = 0;
 	while (y < (data->map.high * PXL))

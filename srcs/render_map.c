@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 16:10:31 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/29 13:21:11 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/29 14:50:35 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static int	put_items(t_data *data, int x, int y)
 
 static int	put_map(t_data *data)
 {
-	int	x;
-	int	y;
+	size_t	x;
+	size_t	y;
 
 	y = 0;
 	while (y < (data->map.high * PXL))
@@ -55,24 +55,24 @@ static int	put_map(t_data *data)
 
 int	xpm_in_struct2(t_data *data, int w, int h)
 {
-	data->xpm.collec1 = mlx_xpm_file_to_image(data->mlx.ptr, "./img/coin1.xpm",
-			&w, &h);
-	data->xpm.collec2 = mlx_xpm_file_to_image(data->mlx.ptr, "./img/coin2.xpm",
-			&w, &h);
-	data->xpm.collec3 = mlx_xpm_file_to_image(data->mlx.ptr, "./img/coin3.xpm",
-			&w, &h);
-	data->xpm.collec4 = mlx_xpm_file_to_image(data->mlx.ptr, "./img/coin4.xpm",
-			&w, &h);
-	data->xpm.collec5 = mlx_xpm_file_to_image(data->mlx.ptr, "./img/coin5.xpm",
-			&w, &h);
+	data->xpm.collec1 = mlx_xpm_file_to_image(data->mlx.ptr,
+			"./textures/coin1.xpm", &w, &h);
+	data->xpm.collec2 = mlx_xpm_file_to_image(data->mlx.ptr,
+			"./textures/coin2.xpm", &w, &h);
+	data->xpm.collec3 = mlx_xpm_file_to_image(data->mlx.ptr,
+			"./textures/coin3.xpm", &w, &h);
+	data->xpm.collec4 = mlx_xpm_file_to_image(data->mlx.ptr,
+			"./textures/coin4.xpm", &w, &h);
+	data->xpm.collec5 = mlx_xpm_file_to_image(data->mlx.ptr,
+			"./textures/coin5.xpm", &w, &h);
 	data->xpm.ennemy1 = mlx_xpm_file_to_image(data->mlx.ptr,
-			"./img/ennemy1.xpm", &w, &h);
+			"./textures/ennemy1.xpm", &w, &h);
 	data->xpm.ennemy2 = mlx_xpm_file_to_image(data->mlx.ptr,
-			"./img/ennemy2.xpm", &w, &h);
-	data->xpm.bg = mlx_xpm_file_to_image(data->mlx.ptr, "./img/grass.xpm", &w,
-			&h);
-	data->xpm.wall = mlx_xpm_file_to_image(data->mlx.ptr, "./img/arbre.xpm", &w,
-			&h);
+			"./textures/ennemy2.xpm", &w, &h);
+	data->xpm.bg = mlx_xpm_file_to_image(data->mlx.ptr, "./textures/grass.xpm",
+			&w, &h);
+	data->xpm.wall = mlx_xpm_file_to_image(data->mlx.ptr,
+			"./textures/arbre.xpm", &w, &h);
 	return (1);
 }
 
@@ -81,18 +81,18 @@ static int	xpm_in_struct(t_data *data)
 	int	w;
 	int	h;
 
-	data->xpm.plr_l = mlx_xpm_file_to_image(data->mlx.ptr, "./img/player_L.xpm",
-			&w, &h);
-	data->xpm.plr_r = mlx_xpm_file_to_image(data->mlx.ptr, "./img/player_R.xpm",
-			&w, &h);
-	data->xpm.plr_d = mlx_xpm_file_to_image(data->mlx.ptr, "./img/player_D.xpm",
-			&w, &h);
-	data->xpm.plr_u = mlx_xpm_file_to_image(data->mlx.ptr, "./img/player_U.xpm",
-			&w, &h);
-	data->xpm.esc_c = mlx_xpm_file_to_image(data->mlx.ptr, "./img/exit_c.xpm",
-			&w, &h);
-	data->xpm.esc_o = mlx_xpm_file_to_image(data->mlx.ptr, "./img/exit_o.xpm",
-			&w, &h);
+	data->xpm.plr_l = mlx_xpm_file_to_image(data->mlx.ptr,
+			"./textures/player_L.xpm", &w, &h);
+	data->xpm.plr_r = mlx_xpm_file_to_image(data->mlx.ptr,
+			"./textures/player_R.xpm", &w, &h);
+	data->xpm.plr_d = mlx_xpm_file_to_image(data->mlx.ptr,
+			"./textures/player_D.xpm", &w, &h);
+	data->xpm.plr_u = mlx_xpm_file_to_image(data->mlx.ptr,
+			"./textures/player_U.xpm", &w, &h);
+	data->xpm.esc_c = mlx_xpm_file_to_image(data->mlx.ptr,
+			"./textures/exit_c.xpm", &w, &h);
+	data->xpm.esc_o = mlx_xpm_file_to_image(data->mlx.ptr,
+			"./textures/exit_o.xpm", &w, &h);
 	xpm_in_struct2(data, w, h);
 	if (!data->xpm.bg || !data->xpm.collec1 || !data->xpm.collec2
 		|| !data->xpm.collec3 || !data->xpm.collec4 || !data->xpm.collec5

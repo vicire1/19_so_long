@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:56:03 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/29 13:58:07 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:06:52 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,32 +37,32 @@
 # define ESC 53
 
 typedef struct	s_player {
-	int			count;
+	size_t		count;
 	int			x;
 	int			y;
 }				t_player;
 
 typedef struct	s_exit {
-	int			count;
+	size_t		count;
 	int			x;
 	int			y;
 }				t_exit;
 
 typedef struct	s_collec {
-	int			count;
-	int			game;
+	size_t		count;
+	size_t		game;
 }				t_collec;
 
 typedef struct	s_ennemy {
-	int			count;
+	size_t		count;
 }				t_ennemy;
 
 typedef struct	s_map {
 	char		*name;
 	char		**layout;
 	int			fd;
-	int			len;
-	int			high;
+	size_t		len;
+	size_t		high;
 }				t_map;
 
 typedef struct	s_xpm {
@@ -89,8 +89,8 @@ typedef struct	s_mlx {
 }				t_mlx;
 
 typedef struct	s_pars {
-	int			collec;
-	int			exit;
+	size_t		collec;
+	size_t		exit;
 	char		**map;
 }				t_pars;
 
@@ -103,21 +103,21 @@ typedef struct	s_data {
 	t_mlx		mlx;
 	t_ennemy	ennemy;
 	t_pars		pars;
-	long		count_moves;
+	size_t		count_moves;
 	int			anim_collec;
 }				t_data;
 
-int	map_check(t_data *data);
-int	freetab(t_data *data, int high, int boolean, char *mess);
-int	strlen_map(char *str);
-int	error_message(char *str);
-int	render_map(t_data *data);
-int	key_press(int keycode, t_data *data);
-int	put_image(t_data *data, void *xpm, int x, int y);
-int	anim(t_data *data);
-int	cross_escape(t_data *data);
-int	check_playable(t_data *data);
-int move_to_screen(t_data *data);
-int	escape(int keycode, t_data *data);
+int		map_check(t_data *data);
+int		freetab(t_data *data, size_t high, int boolean, char *mess);
+size_t	strlen_map(char *str);
+int		error_message(char *str);
+int		render_map(t_data *data);
+int		key_press(int keycode, t_data *data);
+int		put_image(t_data *data, void *xpm, size_t x, size_t y);
+int		anim(t_data *data);
+int		cross_escape(t_data *data);
+int		check_playable(t_data *data);
+int 	move_to_screen(t_data *data);
+int		escape(int keycode, t_data *data);
 
 #endif

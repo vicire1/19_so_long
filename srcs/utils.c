@@ -6,15 +6,15 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:51:59 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/29 11:33:39 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:09:36 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	freetab(t_data *data, int high, int boolean, char *mess)
+int	freetab(t_data *data, size_t high, int boolean, char *mess)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < high)
@@ -30,9 +30,9 @@ int	freetab(t_data *data, int high, int boolean, char *mess)
 	return (-1);
 }
 
-int	strlen_map(char *str)
+size_t	strlen_map(char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (!str)
@@ -58,8 +58,8 @@ int	error_message(char *str)
 	return (-1);
 }
 
-int	put_image(t_data *data, void *xpm, int x, int y)
+int	put_image(t_data *data, void *xpm, size_t x, size_t y)
 {
-	mlx_put_image_to_window(data->mlx.ptr, data->mlx.win, xpm, x, y);
+	mlx_put_image_to_window(data->mlx.ptr, data->mlx.win, xpm, (int)x, (int)y);
 	return (1);
 }
