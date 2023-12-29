@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 16:10:31 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/28 19:16:35 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/29 13:21:11 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	put_map(t_data *data)
 		}
 		y += PXL;
 	}
+	mlx_string_put(data->mlx.ptr, data->mlx.win, 7, 20, 000, "Moves:");
+	mlx_string_put(data->mlx.ptr, data->mlx.win, 85, 20, 000, "0");
 	return (1);
 }
 

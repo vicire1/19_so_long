@@ -6,19 +6,15 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:55:51 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/28 02:19:11 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/29 13:09:51 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	escape(int keycode, t_data *data, int i)
+int	escape(int keycode, t_data *data)
 {
 	(void)keycode;
-	if (i == -1)
-		ft_printf("WASTED\n");
-	if (i == 1)
-		ft_printf("You Won !\n");
 	freetab(data, data->map.high, 0, "");
 	mlx_destroy_window(data->mlx.ptr, data->mlx.win);
 	system("leaks so_long");
@@ -27,7 +23,7 @@ int	escape(int keycode, t_data *data, int i)
 
 int	cross_escape(t_data *data)
 {
-	escape(0, data, 0);
+	escape(0, data);
 	return (1);
 }
 
@@ -49,9 +45,9 @@ static int	move(t_data *data, int x, int y, int orientation)
 	if (data->map.layout[y][x] == '1')
 		return (1);
 	data->count_moves++;
-	ft_printf("Number of moves : %d\n", data->count_moves);
+	move_to_screen(data);
 	if (data->map.layout[y][x] == 'X')
-		return (escape(0, data, -1));
+		return (escape(0, data));
 	if (data->map.layout[y][x] == 'C')
 	{
 		data->collec.game++;
@@ -68,7 +64,7 @@ static int	move(t_data *data, int x, int y, int orientation)
 	data->player.y = y;
 	if (data->collec.count == data->collec.game && data->player.x == data->esc.x
 		&& data->player.y == data->esc.y)
-		escape(0, data, 1);
+		escape(0, data);
 	return (1);
 }
 
@@ -84,6 +80,6 @@ int	key_press(int keycode, t_data *data)
 	if (keycode == S)
 		move(data, data->player.x, data->player.y + 1, 3);
 	if (keycode == ESC)
-		escape(keycode, data, 0);
+		escape(keycode, data);
 	return (0);
 }

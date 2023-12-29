@@ -6,7 +6,7 @@
 #    By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/10 21:59:57 by vdecleir          #+#    #+#              #
-#    Updated: 2023/12/28 18:54:07 by vdecleir         ###   ########.fr        #
+#    Updated: 2023/12/29 12:56:44 by vdecleir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,15 +28,12 @@ SRCS = srcs/gnl/get_next_line.c \
        srcs/utils.c \
        srcs/hooks.c \
        srcs/anim.c \
-	   srcs/parsing.c
+	   srcs/parsing.c \
+	   srcs/move_to_screen.c
 
 OBJ_DIR = objets
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
-
-FT_PRINTF = libftprintf.a
-
-FT_PRINTF_PATH = ./ft_printf
 
 all: $(NAME)
 
@@ -48,21 +45,11 @@ $(NAME): $(OBJS) $(FT_PRINTF)
 	$(CC) $(OBJS) $(MLXFLAGS) -o $(NAME) $(FT_PRINTF)
 	@echo "\n\033[1;32mCompilation complete.\033[0m"
 
-#$(MLX):
-#	$(MAKE) -C $(MLX_PATH)
-#	mv $(MLX_PATH)/$(MLX) .
-
-$(FT_PRINTF):
-	$(MAKE) -C $(FT_PRINTF_PATH)
-	cp $(FT_PRINTF_PATH)/$(FT_PRINTF) .
-	mv $(FT_PRINTF_PATH)/$(FT_PRINTF) $(NAME)
-
 clean:
-	$(MAKE) clean -C $(FT_PRINTF_PATH)
 	$(RM) $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME) $(FT_PRINTF)
+	$(RM) $(NAME)
 
 re: fclean all
 

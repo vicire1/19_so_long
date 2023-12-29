@@ -6,14 +6,13 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:56:03 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/28 20:14:59 by vdecleir         ###   ########.fr       */
+/*   Updated: 2023/12/29 13:22:05 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../ft_printf/ft_printf.h"
 # include "./get_next_line.h"
 # include <fcntl.h>
 # include <mlx.h>
@@ -106,7 +105,7 @@ typedef struct	s_data {
 	t_mlx		mlx;
 	t_ennemy	ennemy;
 	t_pars		pars;
-	int			count_moves;
+	long		count_moves;
 	int			anim_collec;
 }				t_data;
 
@@ -115,11 +114,12 @@ int	freetab(t_data *data, int high, int boolean, char *mess);
 int	strlen_map(char *str);
 int	error_message(char *str);
 int	render_map(t_data *data);
-int	escape(int keycode, t_data *data, int i);
 int	key_press(int keycode, t_data *data);
 int	put_image(t_data *data, void *xpm, int x, int y);
 int	anim(t_data *data);
 int	cross_escape(t_data *data);
 int	check_playable(t_data *data);
+int move_to_screen(t_data *data);
+int	escape(int keycode, t_data *data);
 
 #endif
