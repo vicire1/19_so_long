@@ -6,7 +6,7 @@
 /*   By: vdecleir <vdecleir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:16:57 by vdecleir          #+#    #+#             */
-/*   Updated: 2023/12/29 15:11:52 by vdecleir         ###   ########.fr       */
+/*   Updated: 2024/01/03 14:12:58 by vdecleir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ static int	cpy_parsing_map(t_data *data)
 
 int	check_playable(t_data *data)
 {
-	cpy_parsing_map(data);
+	if (cpy_parsing_map(data) == -1)
+		return (-1);
 	parsing(data, data->player.x, data->player.y);
 	freepars(data, data->map.high);
 	if (data->collec.count != data->pars.collec || data->pars.exit != 1)
