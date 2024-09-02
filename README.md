@@ -1,6 +1,6 @@
 # So_long
 
-<img width="665" alt="Screen Shot 2024-09-02 at 5 50 05 PM" src="https://github.com/user-attachments/assets/80ed3aec-0eac-4171-b20e-14f41790333d">
+<img width="665" alt="So_long" src="https://github.com/user-attachments/assets/80ed3aec-0eac-4171-b20e-14f41790333d">
 
 ## Description
 
