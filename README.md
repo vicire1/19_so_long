@@ -38,7 +38,7 @@ $ make
 ```
 
 ## Usage
-To run the \`so_long\` game, pass a map file (with the `**.ber**` extension) as an argument:
+To run the **\`so_long\`** game, pass a map file (with the **\`.ber\`** extension) as an argument:
 
 ```bash
 $ ./so_long maps/map.ber
@@ -46,18 +46,18 @@ $ ./so_long maps/map.ber
 
 ### Game Mechanics
 The player controls the main character using the **W**, **A**, **S**, and **D** keys.
-The player's objective is to collect all collectibles (`C`) on the map and reach the exit (`E`).
-The player can move up, down, left, and right but cannot move through walls (`1`).
+The player's objective is to collect all collectibles (\`C\`) on the map and reach the exit (\`E\`).
+The player can move up, down, left, and right but cannot move through walls (\`1\`).
 
 ## Map Format
 
 The map file should consist of the following characters:
-- `0`: Empty space
-- `1`: Wall
-- `C`: Collectible
-- `E`: Exit
-- `P`: Player's starting position
-- `X`: Ennemy
+- \`0\`: Empty space
+- \`1\`: Wall
+- \`C\`: Collectible
+- \`E\`: Exit
+- \`P\`: Player's starting position
+- \`X\`: Ennemy
   
 The map must be rectangular, enclosed by walls, and contain at least one exit, one collectible, and one starting position.
 
