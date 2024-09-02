@@ -38,7 +38,7 @@ $ make
 ```
 
 ## Usage
-To run the `**so_long**` game, pass a map file (with the `**.ber**` extension) as an argument:
+To run the \`so_long\` game, pass a map file (with the `**.ber**` extension) as an argument:
 
 ```bash
 $ ./so_long maps/map.ber
