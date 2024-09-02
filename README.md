@@ -1,6 +1,6 @@
 # So_long
 
-![So_long](https://github.com/vicire1/So_long/assets/111586308/43909758-9845-4518-98cc-f4aeb18e0541)
+<img width="665" alt="Screen Shot 2024-09-02 at 5 50 05 PM" src="https://github.com/user-attachments/assets/80ed3aec-0eac-4171-b20e-14f41790333d">
 
 ## Description
 
